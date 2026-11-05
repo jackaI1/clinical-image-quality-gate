@@ -1,0 +1,5 @@
+{
+  "command": "uv run image-qc reproduce",
+  "seed": 42,
+  "manifest_sha256": "6ec9a06f73de1f6e540a91a09ea080b4855eca4ef609737d66fe5f685b1cac74"
+}

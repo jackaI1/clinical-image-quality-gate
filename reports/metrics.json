@@ -1,0 +1,623 @@
+{
+  "overall": {
+    "n": 1152,
+    "correct": 688,
+    "accuracy": 0.5972222222222222
+  },
+  "clean_baseline": {
+    "n": 72,
+    "correct": 59,
+    "accuracy": 0.8194444444444444
+  },
+  "rules": {
+    "accepted": {
+      "n": 437,
+      "correct": 308,
+      "accuracy": 0.7048054919908466
+    },
+    "rejected": {
+      "n": 715,
+      "correct": 380,
+      "accuracy": 0.5314685314685315
+    },
+    "coverage": {
+      "n": 437,
+      "total": 1152,
+      "rate": 0.3793402777777778
+    },
+    "bad_rejected": {
+      "n": 683,
+      "total": 720,
+      "rate": 0.9486111111111111
+    },
+    "acceptable_retained": {
+      "n": 400,
+      "total": 432,
+      "rate": 0.9259259259259259
+    },
+    "clean_retained": {
+      "n": 67,
+      "total": 72,
+      "rate": 0.9305555555555556
+    },
+    "by_class": {
+      "0": {
+        "accepted": {
+          "n": 220,
+          "correct": 117,
+          "accuracy": 0.5318181818181819
+        },
+        "rejected": {
+          "n": 356,
+          "correct": 66,
+          "accuracy": 0.1853932584269663
+        }
+      },
+      "1": {
+        "accepted": {
+          "n": 217,
+          "correct": 191,
+          "accuracy": 0.880184331797235
+        },
+        "rejected": {
+          "n": 359,
+          "correct": 314,
+          "accuracy": 0.8746518105849582
+        }
+      }
+    },
+    "bootstrap": {
+      "unit": "source lesion",
+      "repeats": 500,
+      "valid_repeats": 500,
+      "accepted_minus_rejected_ci95": [
+        0.10932917696842907,
+        0.2341441972946369
+      ]
+    }
+  },
+  "learned": {
+    "accepted": {
+      "n": 409,
+      "correct": 280,
+      "accuracy": 0.684596577017115
+    },
+    "rejected": {
+      "n": 743,
+      "correct": 408,
+      "accuracy": 0.5491251682368775
+    },
+    "coverage": {
+      "n": 409,
+      "total": 1152,
+      "rate": 0.3550347222222222
+    },
+    "bad_rejected": {
+      "n": 703,
+      "total": 720,
+      "rate": 0.9763888888888889
+    },
+    "acceptable_retained": {
+      "n": 392,
+      "total": 432,
+      "rate": 0.9074074074074074
+    },
+    "clean_retained": {
+      "n": 69,
+      "total": 72,
+      "rate": 0.9583333333333334
+    },
+    "by_class": {
+      "0": {
+        "accepted": {
+          "n": 217,
+          "correct": 106,
+          "accuracy": 0.48847926267281105
+        },
+        "rejected": {
+          "n": 359,
+          "correct": 77,
+          "accuracy": 0.21448467966573817
+        }
+      },
+      "1": {
+        "accepted": {
+          "n": 192,
+          "correct": 174,
+          "accuracy": 0.90625
+        },
+        "rejected": {
+          "n": 384,
+          "correct": 331,
+          "accuracy": 0.8619791666666666
+        }
+      }
+    },
+    "bootstrap": {
+      "unit": "source lesion",
+      "repeats": 500,
+      "valid_repeats": 500,
+      "accepted_minus_rejected_ci95": [
+        0.08265672488898813,
+        0.19105757754508823
+      ]
+    }
+  },
+  "by_degradation": [
+    {
+      "kind": "clean",
+      "strength": 0,
+      "bad": 0,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 59,
+        "accuracy": 0.8194444444444444
+      },
+      "rules": {
+        "n": 5,
+        "total": 72,
+        "rate": 0.06944444444444445
+      },
+      "learned": {
+        "n": 3,
+        "total": 72,
+        "rate": 0.041666666666666664
+      }
+    },
+    {
+      "kind": "blur",
+      "strength": 1,
+      "bad": 0,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 58,
+        "accuracy": 0.8055555555555556
+      },
+      "rules": {
+        "n": 4,
+        "total": 72,
+        "rate": 0.05555555555555555
+      },
+      "learned": {
+        "n": 11,
+        "total": 72,
+        "rate": 0.1527777777777778
+      }
+    },
+    {
+      "kind": "blur",
+      "strength": 2,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 57,
+        "accuracy": 0.7916666666666666
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    },
+    {
+      "kind": "blur",
+      "strength": 3,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 56,
+        "accuracy": 0.7777777777777778
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    },
+    {
+      "kind": "dark",
+      "strength": 1,
+      "bad": 0,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 52,
+        "accuracy": 0.7222222222222222
+      },
+      "rules": {
+        "n": 2,
+        "total": 72,
+        "rate": 0.027777777777777776
+      },
+      "learned": {
+        "n": 16,
+        "total": 72,
+        "rate": 0.2222222222222222
+      }
+    },
+    {
+      "kind": "dark",
+      "strength": 2,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 30,
+        "accuracy": 0.4166666666666667
+      },
+      "rules": {
+        "n": 37,
+        "total": 72,
+        "rate": 0.5138888888888888
+      },
+      "learned": {
+        "n": 69,
+        "total": 72,
+        "rate": 0.9583333333333334
+      }
+    },
+    {
+      "kind": "dark",
+      "strength": 3,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 20,
+        "accuracy": 0.2777777777777778
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    },
+    {
+      "kind": "bright",
+      "strength": 1,
+      "bad": 0,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 51,
+        "accuracy": 0.7083333333333334
+      },
+      "rules": {
+        "n": 9,
+        "total": 72,
+        "rate": 0.125
+      },
+      "learned": {
+        "n": 3,
+        "total": 72,
+        "rate": 0.041666666666666664
+      }
+    },
+    {
+      "kind": "bright",
+      "strength": 2,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 37,
+        "accuracy": 0.5138888888888888
+      },
+      "rules": {
+        "n": 70,
+        "total": 72,
+        "rate": 0.9722222222222222
+      },
+      "learned": {
+        "n": 63,
+        "total": 72,
+        "rate": 0.875
+      }
+    },
+    {
+      "kind": "bright",
+      "strength": 3,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 36,
+        "accuracy": 0.5
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    },
+    {
+      "kind": "framing",
+      "strength": 1,
+      "bad": 0,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 36,
+        "accuracy": 0.5
+      },
+      "rules": {
+        "n": 7,
+        "total": 72,
+        "rate": 0.09722222222222222
+      },
+      "learned": {
+        "n": 7,
+        "total": 72,
+        "rate": 0.09722222222222222
+      }
+    },
+    {
+      "kind": "framing",
+      "strength": 2,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 36,
+        "accuracy": 0.5
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    },
+    {
+      "kind": "framing",
+      "strength": 3,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 36,
+        "accuracy": 0.5
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    },
+    {
+      "kind": "hair",
+      "strength": 1,
+      "bad": 0,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 52,
+        "accuracy": 0.7222222222222222
+      },
+      "rules": {
+        "n": 5,
+        "total": 72,
+        "rate": 0.06944444444444445
+      },
+      "learned": {
+        "n": 0,
+        "total": 72,
+        "rate": 0.0
+      }
+    },
+    {
+      "kind": "hair",
+      "strength": 2,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 36,
+        "accuracy": 0.5
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 67,
+        "total": 72,
+        "rate": 0.9305555555555556
+      }
+    },
+    {
+      "kind": "hair",
+      "strength": 3,
+      "bad": 1,
+      "n": 72,
+      "baseline": {
+        "n": 72,
+        "correct": 36,
+        "accuracy": 0.5
+      },
+      "rules": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      },
+      "learned": {
+        "n": 72,
+        "total": 72,
+        "rate": 1.0
+      }
+    }
+  ],
+  "threshold_curve": [
+    {
+      "threshold": 0.0,
+      "n": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    {
+      "threshold": 0.05,
+      "n": 222,
+      "correct": 142,
+      "accuracy": 0.6396396396396397
+    },
+    {
+      "threshold": 0.1,
+      "n": 285,
+      "correct": 186,
+      "accuracy": 0.6526315789473685
+    },
+    {
+      "threshold": 0.15000000000000002,
+      "n": 335,
+      "correct": 224,
+      "accuracy": 0.6686567164179105
+    },
+    {
+      "threshold": 0.2,
+      "n": 367,
+      "correct": 249,
+      "accuracy": 0.6784741144414169
+    },
+    {
+      "threshold": 0.25,
+      "n": 390,
+      "correct": 263,
+      "accuracy": 0.6743589743589744
+    },
+    {
+      "threshold": 0.30000000000000004,
+      "n": 407,
+      "correct": 278,
+      "accuracy": 0.683046683046683
+    },
+    {
+      "threshold": 0.35000000000000003,
+      "n": 417,
+      "correct": 286,
+      "accuracy": 0.6858513189448441
+    },
+    {
+      "threshold": 0.4,
+      "n": 428,
+      "correct": 293,
+      "accuracy": 0.6845794392523364
+    },
+    {
+      "threshold": 0.45,
+      "n": 436,
+      "correct": 300,
+      "accuracy": 0.6880733944954128
+    },
+    {
+      "threshold": 0.5,
+      "n": 437,
+      "correct": 300,
+      "accuracy": 0.6864988558352403
+    },
+    {
+      "threshold": 0.55,
+      "n": 439,
+      "correct": 301,
+      "accuracy": 0.6856492027334852
+    },
+    {
+      "threshold": 0.6000000000000001,
+      "n": 449,
+      "correct": 308,
+      "accuracy": 0.6859688195991092
+    },
+    {
+      "threshold": 0.65,
+      "n": 461,
+      "correct": 314,
+      "accuracy": 0.6811279826464208
+    },
+    {
+      "threshold": 0.7000000000000001,
+      "n": 481,
+      "correct": 327,
+      "accuracy": 0.6798336798336798
+    },
+    {
+      "threshold": 0.75,
+      "n": 506,
+      "correct": 342,
+      "accuracy": 0.6758893280632411
+    },
+    {
+      "threshold": 0.8,
+      "n": 544,
+      "correct": 372,
+      "accuracy": 0.6838235294117647
+    },
+    {
+      "threshold": 0.8500000000000001,
+      "n": 602,
+      "correct": 416,
+      "accuracy": 0.6910299003322259
+    },
+    {
+      "threshold": 0.9,
+      "n": 642,
+      "correct": 444,
+      "accuracy": 0.6915887850467289
+    },
+    {
+      "threshold": 0.9500000000000001,
+      "n": 692,
+      "correct": 469,
+      "accuracy": 0.6777456647398844
+    },
+    {
+      "threshold": 1.0,
+      "n": 1151,
+      "correct": 688,
+      "accuracy": 0.5977410947002606
+    }
+  ],
+  "dataset": {
+    "sources": 360,
+    "variants_per_source": 16,
+    "split_counts": {
+      "train": 216,
+      "validation": 72,
+      "test": 72
+    },
+    "manifest_sha256": "6ec9a06f73de1f6e540a91a09ea080b4855eca4ef609737d66fe5f685b1cac74",
+    "seed": 42
+  }
+}
