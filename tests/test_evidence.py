@@ -39,3 +39,18 @@ def test_saved_sources_and_predictions_are_disjoint():
         rows = list(csv.DictReader(f))
     assert all(split[r["isic_id"]] == "test" for r in rows)
     assert len({(r["isic_id"], r["kind"], r["strength"]) for r in rows}) == len(rows)
+
+
+def test_parameter_tolerance_allows_small_platform_rounding_only():
+    import runpy
+
+    import pytest
+
+    compare = runpy.run_path("scripts/verify_evidence.py")["compare"]
+    compare({"coefficient": [1.00001]}, {"coefficient": [1.0]}, tolerance=1e-4)
+    with pytest.raises(AssertionError):
+        compare({"coefficient": [1.01]}, {"coefficient": [1.0]}, tolerance=1e-4)
+    with pytest.raises(AssertionError):
+        compare({"correct": 11}, {"correct": 10}, tolerance=1e-4)
+    with pytest.raises(AssertionError):
+        compare({"accuracy": 0.6846}, {"accuracy": 0.6845})

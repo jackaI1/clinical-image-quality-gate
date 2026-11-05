@@ -11,17 +11,19 @@ from image_qc.experiment import summarize
 from image_qc.images import VARIANTS
 
 
-def compare(actual, expected, path="metrics"):
+def compare(actual, expected, path="metrics", tolerance=1e-7):
     if isinstance(expected, dict):
         assert actual.keys() == expected.keys(), f"{path}: fields differ"
         for key in expected:
-            compare(actual[key], expected[key], f"{path}.{key}")
+            compare(actual[key], expected[key], f"{path}.{key}", tolerance)
     elif isinstance(expected, list):
         assert len(actual) == len(expected), f"{path}: lengths differ"
         for i, (a, e) in enumerate(zip(actual, expected, strict=True)):
-            compare(a, e, f"{path}[{i}]")
+            compare(a, e, f"{path}[{i}]", tolerance)
     elif isinstance(expected, float):
-        assert math.isclose(actual, expected, abs_tol=1e-7, rel_tol=1e-7), f"{path}: value differs"
+        assert math.isclose(actual, expected, abs_tol=tolerance, rel_tol=tolerance), (
+            f"{path}: value differs"
+        )
     else:
         assert actual == expected, f"{path}: {actual!r} != {expected!r}"
 
@@ -76,7 +78,35 @@ def main():
             json.loads((args.report / "models.json").read_text()),
             json.loads((args.expected / "models.json").read_text()),
             "models",
+            tolerance=1e-4,
         )
+        with (args.expected / "predictions.csv").open() as f:
+            published = list(csv.DictReader(f))
+        decisions = [
+            (
+                r["isic_id"],
+                r["kind"],
+                r["strength"],
+                r["label"],
+                r["rules_accept"],
+                r["learned_accept"],
+                r["lesion_pred"],
+            )
+            for r in rows
+        ]
+        expected_decisions = [
+            (
+                r["isic_id"],
+                r["kind"],
+                int(r["strength"]),
+                int(r["label"]),
+                r["rules_accept"] == "True",
+                r["learned_accept"] == "True",
+                int(r["lesion_pred"]),
+            )
+            for r in published
+        ]
+        assert sorted(decisions) == sorted(expected_decisions), "per-version decisions changed"
     print(f"Verified {len(rows)} held-out versions against source manifest and saved counts.")
 
 

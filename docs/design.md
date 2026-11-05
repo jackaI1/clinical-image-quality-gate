@@ -34,7 +34,7 @@ The benchmark saves per-version decisions and measurements, model parameters, so
 
 For an uncertainty interval on accepted-minus-rejected accuracy, I resample source lesions 500 times with seed 42 and keep every generated version together. Empty accepted or rejected subsets have null accuracy, not zero. These intervals describe variation within this convenience sample and do not correct for the archive's selection or unknown patient relationships. A threshold sweep records kept-image counts and accuracy. Hard abstentions remain rejected at every model threshold.
 
-CI reruns the full frozen experiment and compares counts, rates and numeric models with the checked-in evidence. Offline tests additionally replace held-out pixels and check that fitted coefficients, calibration limits and the lesion classifier do not change. A source download mismatch fails the run rather than silently dropping a source or producing a partial result.
+CI reruns the full frozen experiment and compares counts, rates, individual decisions and numeric models with the checked-in evidence. Counts and individual decisions must match exactly. Rates use a numerical tolerance of 0.0000001; model parameters use 0.0001 because CPU rounding at histogram boundaries and solver precision differ slightly between Mac and Linux. The first cross-platform run produced identical predictions and gate decisions, with a maximum parameter difference of about 0.0000103. Offline tests additionally replace held-out pixels and check that fitted coefficients, calibration limits and the lesion classifier do not change. A source download mismatch fails the run rather than silently dropping a source or producing a partial result.
 
 ## Extending the experiment
 
