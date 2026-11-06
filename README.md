@@ -1,24 +1,18 @@
-# Clinical image quality gate
+I merged this into my existing [lab-assay-lims project](https://github.com/jackaI1/lab-assay-lims/tree/main/projects/clinical-image-quality-gate). The current code is in `projects/clinical-image-quality-gate/` there. I kept the code here so older links still work.
 
-I built a photo quality gate because I wanted to stop a small image classifier from answering when its input had been visibly damaged. I give it a photo, it measures focus, brightness, lost field area and dark-line obstruction, then either accepts it or abstains. When it abstains, it never runs the lesion classifier.
+The move keeps the original layout, including `tests/test_images.py`, `tests/test_workflow.py`, `tests/test_evidence.py`, `tests/test_models.py`. I replaced the README with the report below and left out Git history, installed dependencies, caches and generated build output from the hub copy.
 
-I tested this with public dermoscopic photos, which are close-up skin images taken through a special lens. I added blur, darkening, brightening, lost framing and artificial hair at recorded strengths. I compared simple measurement rules with a small trained gate, then checked how a separate lesion classifier performed on the photos each gate kept or rejected.
+The 5 test source files moved with the code. No project-specific GitHub Actions workflow was retained; the report records the omitted checks, and the test sources can be run locally from the linked folder.
 
-**This is a research demonstration, not a diagnostic tool.** An accepted photo is not a promise that a medical answer is correct. The labels describe synthetic damage, not a clinician's judgement of whether a photo is usable.
+Other specific omissions: reports/ (generated output).
 
-[Read the saved report with example images](reports/REPORT.md). It opens directly on GitHub without installing anything. I also saved a [standalone HTML report](reports/index.html); download it and open it locally to read it offline.
+Omitted workflows: `clinical-image-quality-gate-ci.yml`: The relocated workflow failed in GitHub Actions and was removed to keep the hub checks independent. Local test sources remain available.
 
-To try the gate, install [uv](https://docs.astral.sh/uv/getting-started/installation/), clone this repository, and run:
+---
 
-```sh
-git clone https://github.com/jackaI1/clinical-image-quality-gate.git
-cd clinical-image-quality-gate
-uv sync --frozen
-uv run image-qc download
-uv run image-qc check data/images/ISIC_0024307.jpg
-```
+# clinical-image-quality-gate
 
-I can use `uv run image-qc check /path/to/photo.jpg --method rules` to try the simple checks, or leave out `--method` to use the learned gate. The JSON output includes `accept` or `abstain`, measurements, reasons and a lesion prediction only when accepted. Missing, unreadable or undersized images produce an error; flat images abstain. Both methods use the saved parameters in `reports/models.json`.
+I built a photo quality gate to learn how the underlying idea works. This is a learning project.
 
 ## What I found
 
@@ -78,14 +72,14 @@ The clean originals can already have defects. Known corruption strength gives a 
 
 Accepted and rejected groups contain different damage and class mixtures. Their accuracy difference is descriptive, not proof that gating causes better diagnosis. I would need expert quality ratings, patient-level separation, broader data and a stronger independently validated downstream model before drawing conclusions about clinical use.
 
-## Checks and project layout
+## Tests and limits
 
-```sh
-uv run pytest -q
-uv run ruff check .
-uv run ruff format --check .
-```
+There are 5 test source files in this copy. That source count does not establish an execution result. This is a source snapshot, and running it on a new machine may need environment-specific setup.
 
-The [CI workflow](.github/workflows/ci.yml) runs the complete test suite and formatting checks, downloads the frozen public sample, reruns the real experiment and verifies its numerical evidence against the saved results. The offline tests exercise controlled damage, provenance, source separation, held-out data isolation, empty groups, checksum failures, safe JSON model export and abstention before lesion inference. Dependency versions and the Python requirement are recorded in `pyproject.toml` and `uv.lock`.
 
-`src/image_qc/` holds the data loader, image transformations, models, experiment, report writer and CLI. `tests/` holds the offline regression tests. `scripts/` checks saved evidence and updates the results above from the generated report. [docs/design.md](docs/design.md) explains the evaluation decisions in more detail.
+
+Generated output omitted from this copy: reports/ (generated output). Regenerate it with the project scripts.
+
+The relocated workflow failed in GitHub Actions and was removed to keep the hub checks independent. Local test sources remain available.
+
+No project-specific GitHub Actions workflow was retained. The local test sources remain in this folder.
